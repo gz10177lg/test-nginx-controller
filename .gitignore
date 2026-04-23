@@ -1,0 +1,64 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+.kotlin
+
+### IntelliJ IDEA ###
+.idea/**
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### Claude IDE ###
+.claude/
+.claude/settings.local.json
+
+### Docker ###
+logs/
+*.log
+
+### Temporary files ###
+temp/
+tmp/
+*.tmp
+
+### IDE specific ###
+.idea/encodings.xml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/inspectionProfiles/
+
+### Maven ###
+**/mvnw.cmd
+**/mvnw.cmd.cmd
+
+### Test reports ###
+surefire-reports/
+failsafe-reports/
+
