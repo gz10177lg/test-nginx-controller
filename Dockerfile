@@ -1,29 +1,18 @@
-# 使用官方 OpenJDK 21 镜像作为基础镜像
-FROM openjdk:21-jdk-slim
+# ========== 第一阶段：构建阶段（编译代码） ==========
+FROM maven:4.0.0-rc-5-eclipse-temurin-21-noble AS builder
 
-# 设置工作目录
 WORKDIR /app
 
-# 复制 Maven 包装器
-COPY mvnw .
-COPY .mvn .mvn
-COPY mvnw.cmd .
-
-# 复制 pom.xml
 COPY pom.xml .
+RUN mvn dependency:go-offline -B
 
-# 安装 Maven 并下载依赖（利用 Docker 层缓存）
-RUN apt-get update && apt-get install -y maven
-RUN ./mvnw dependency:go-offline -B
-
-# 复制源代码
 COPY src ./src
+RUN mvn clean package -DskipTests -B
 
-# 构建应用
-RUN ./mvnw clean package -DskipTests -B
+# ========== 第二阶段：运行阶段 ==========
+FROM eclipse-temurin:21.0.10_7-jre-jammy
 
-# 暴露端口
+WORKDIR /app
+COPY --from=builder /app/target/test-nginx-controller-1.0-SNAPSHOT-exec.jar app.jar
 EXPOSE 8080
-
-# 运行应用
-CMD ["java", "-jar", "target/nginx-controller-1.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]

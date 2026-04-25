@@ -1,11 +1,16 @@
+### Maven ###
 target/
-!.mvn/wrapper/maven-wrapper.jar
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
 !**/src/main/**/target/
 !**/src/test/**/target/
-.kotlin
 
 ### IntelliJ IDEA ###
-.idea/**
 *.iws
 *.iml
 *.ipr
@@ -35,10 +40,6 @@ build/
 ### Mac OS ###
 .DS_Store
 
-### Claude IDE ###
-.claude/
-.claude/settings.local.json
-
 ### Docker ###
 logs/
 *.log
@@ -48,17 +49,6 @@ temp/
 tmp/
 *.tmp
 
-### IDE specific ###
-.idea/encodings.xml
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/inspectionProfiles/
-
-### Maven ###
-**/mvnw.cmd
-**/mvnw.cmd.cmd
-
 ### Test reports ###
 surefire-reports/
 failsafe-reports/
-
